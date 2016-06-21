@@ -194,7 +194,7 @@ mutual
   quot {A ⊃ B} t        = later (∞expand⊃ t)
   quot {A ∧ B} t        = later (∞expand∧ t)
   quot {□ A}   (boxᵥ t) = boxₙ <$> quot t
-  quot {□ A}   (neᵥ t)  = neₙ <$> quotₙ t
+  quot {□ A}   (neᵥ t)  = t′ ← quotₙ t ⁏ now (neₙ (unboxₙ t′ (boxₙ (neₙ (⋆varₙ top)))))
   quot {⊤}    t        = now unitₙ
 
   quotₙ : ∀ {A Γ Δ i} → Ne Val Γ Δ A → Delay i (Ne No Γ Δ A)
